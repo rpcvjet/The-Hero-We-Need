@@ -1,6 +1,5 @@
 (function(module) {
   'use strict';
-  var policeData = {};
 
   function policeData(incident){
     this.date_reported=new Date(incident.date_reported);
@@ -54,11 +53,33 @@
 
 
   policeData.buildDatabase = function(){
+    webDB.execute(
+      'CREATE TABLE IF NOT EXISTS crimes('+
+      'id INTEGER PRIMARY KEY,'+
+      'date DATE,'+
+      'crime_type VARCHAR,'+
+      'zip VARCHAR(5),'+
+      'longitude FLOAT,'+
+      'latitude FLOAT);',
+      console.log('successfully set up the table')
+    );
 
+    policeData.allIncidents.forEach(function(elem){
+      elem.insertRecord();
+    });
+  };
+
+  policeData.prototype.insertRecord = function(){
+    webDB.execute(
+      [{
+        'sql': 'INSERT INTO crimes(date, crime_type, zip, longitude, latitude) VALUES(?,?,?,?,?);',
+        'data':[this.date_reported, this.summarized_offense_description, this.zip, this.location.longitude, this.location.latitude]
+      }]
+    );
   };
 
 
-  policeData.fetchData();
+  policeData.fetchData(policeData.buildDatabase);
 
   module.policeData = policeData;
-}(window));
+})(window);
