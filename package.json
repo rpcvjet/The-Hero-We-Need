@@ -1,12 +1,11 @@
 {
-  "name": "The Hero We Need",
+  "name": "The-Hero-We-Need",
   "version": "1.0.0",
   "description": "Accessing the Seattle Crime Database and display data on Google Maps",
   "main": "server.js",
   "dependencies": {
     "express": "^4.14.0",
-    "express-request-proxy": "^2.0.0",
-    "handlebars": "^4.0.5"
+    "express-request-proxy": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
