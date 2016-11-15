@@ -38,6 +38,7 @@
     policeData.allIncidents.map(function(data){
       $('#police-data').append(data.renderTable());
     });
+    mapsDataView.renderMaps();
   };
 
   policeData.callSeattle = function(){
@@ -114,7 +115,6 @@
   };
 
 
-  policeData.fetchData();
 
   module.policeData = policeData;
 })(window);
