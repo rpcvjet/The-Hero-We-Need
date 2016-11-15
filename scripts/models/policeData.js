@@ -11,6 +11,13 @@
 
   policeData.allIncidents = [];
 
+  policeData.prototype.renderTable = function() {
+    console.log('RUN RENDER');
+    var source = $('#data-table-template').html();
+    var template = Handlebars.compile(source);
+    return template(this);
+  };
+
   policeData.getZip=function(incident){
     var latlng=incident.location.latitude+','+incident.location.longitude;
     var zippy;
@@ -27,6 +34,9 @@
   policeData.loadData = function(inputData){
     policeData.allIncidents=inputData.map(function(elem,idx,array){
       return new policeData(elem);
+    });
+    policeData.allIncidents.map(function(data){
+      $('#police-data').append(data.renderTable());
     });
   };
 

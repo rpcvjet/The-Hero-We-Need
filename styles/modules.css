@@ -2,3 +2,10 @@
   border-radius: 100%;
   margin-bottom: 5%;
 }
+#police-data > tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.table th, .table td {
+  text-align: center;
+}
