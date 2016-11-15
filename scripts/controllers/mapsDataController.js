@@ -1,6 +1,11 @@
+'use strict';
 (function(module) {
-  'use strict';
   var mapsDataController = {};
+
+  mapsDataController.reveal = function() {
+    $('#about  ').hide();
+    $('#crimedata').show();
+  };
 
   module.mapsDataController = mapsDataController;
 }(window));
