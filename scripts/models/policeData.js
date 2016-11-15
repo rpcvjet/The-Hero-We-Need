@@ -3,7 +3,7 @@
 
   function policeData(incident){
     this.date_reported=new Date(incident.date_reported);
-    this.location = incident.location;
+    this.location = {lat: incident.location.latitude, lon:incident.location.longitude};
     this.offense_type=incident.offense_type;
     this.summarized_offense_description=incident.summarized_offense_description;
     this.zip=policeData.getZip(incident);
@@ -28,11 +28,7 @@
     policeData.allIncidents=inputData.map(function(elem,idx,array){
       return new policeData(elem);
     });
-
   };
-
-
-
 
   policeData.callSeattle = function(){
     //The Date object accounts for time zone but the Seattle Dataset does not.  An extra 8 hours need to be
