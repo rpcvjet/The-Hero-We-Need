@@ -1,33 +1,43 @@
   'use strict';
-(function(module) {
+  (function(module) {
 
-  var mapsDataView = {};
-  mapsDataView.renderMaps = function (){
+
+
+    var infoWindow = new google.maps.InfoWindow();
+
+    var mapsDataView = {};
+
+    mapsDataView.renderMaps = function (){
 //    var jsonIncidents= JSON.stringify(policeData.allIncidents);
   // Creating a new map
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: new google.maps.LatLng(47.6, -122.3),
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-
-
-    for (var i = 0, length = policeData.allIncidents.length; i < length; i++) {
-      var data = policeData.allIncidents[i];
-      console.log(policeData.allIncidents);
-      console.log(data);
-      var latLng = new google.maps.LatLng(data.location.lat, data.location.lon);
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: new google.maps.LatLng(47.6, -122.3),
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+      for (var i = 0, length = policeData.allIncidents.length; i < length; i++) {
+        var data = policeData.allIncidents[i];
+        var latLng = new google.maps.LatLng(data.location.lat, data.location.lon);
 
     // Creating a marker and putting it on the map
-      var marker = new google.maps.Marker({
-        position: latLng,
-        map: map,
-        title: "title!"
-      });
-    }
-  };
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: 'title!'
+        });
 
-  policeData.fetchData();
-  module.mapsDataView = mapsDataView;
-}(window));
+        (function(marker, data) {
+
+          // Attaching a click event to the current marker
+          google.maps.event.addListener(marker, 'click', function(e) {
+            infoWindow.setContent(data.date_reported.toString() + '<br>' + data.summarized_offense_description);
+
+            infoWindow.open(map, marker);
+          });
+        }) (marker, data);
+      }
+    };
+
+    policeData.fetchData();
+    module.mapsDataView = mapsDataView;
+  }(window));
