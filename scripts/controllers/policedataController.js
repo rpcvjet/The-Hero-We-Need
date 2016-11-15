@@ -3,7 +3,7 @@
   var policeDataController = {};
 
   policeDataController.reveal = function() {
-    $('#about').hide();
+    $('.barny').hide();
     $('#crimedata').show();
   };
 

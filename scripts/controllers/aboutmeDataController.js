@@ -1,9 +1,9 @@
+'use strict';
 (function(module) {
-  'use strict';
   var aboutmeDataController = {};
 
   aboutmeDataController.reveal = function() {
-    $('#crimedata').hide();
+    $('.barny').hide();
     $('#about').show();
   };
 

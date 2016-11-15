@@ -3,8 +3,8 @@
   var mapsDataController = {};
 
   mapsDataController.reveal = function() {
-    $('#about  ').hide();
-    $('#crimedata').show();
+    $('.barny').hide();
+    $('#map').show();
   };
 
   module.mapsDataController = mapsDataController;
