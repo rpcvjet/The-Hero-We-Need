@@ -1,4 +1,5 @@
 .about-pic {
   border-radius: 100%;
   margin-bottom: 5%;
+  max-width: 75%;
 }
