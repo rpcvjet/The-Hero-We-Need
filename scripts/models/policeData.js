@@ -28,7 +28,6 @@
     policeData.allIncidents=inputData.map(function(elem,idx,array){
       return new policeData(elem);
     });
-    policeData.buildDatabase();
 
   };
 
@@ -45,6 +44,8 @@
       localStorage.setItem('lastMod', lastMod);
       localStorage.setItem('allIncidents', JSON.stringify(data));
       policeData.loadData(data);
+      policeData.buildDatabase();
+
     });
   };
 
@@ -57,24 +58,22 @@
 
   policeData.fetchData = function(){
 
-    // if(!localStorage.lastMod){
+    if(!localStorage.lastMod){
       policeData.callSeattle();
-    // }else{
-      // var twelveHoursAgo = new Date(Date.now()-(20*60*60*1000)).toISOString();
-      // $.get('https://data.seattle.gov/resource/teu6-p2zn.json?$where=date_reported>"'+twelveHoursAgo+'"',
-      //    function(data,msg,xhr){
-      //      if(localStorage.lastMod=== xhr.getResponseHeader('Last-Modified')){
-      //       //do nothing
-      //        console.log('the last mods were the same');
-      //
-      //        loadData(localStorage.allIncidents);
-      //      }else{
-      //        policeData.clearDB();
-      //        policeData.callSeattle();
-      //        console.log('the last mods were not the same');
-      //      }
-        //  });
-    // }
+    }else{
+      var twelveHoursAgo = new Date(Date.now()-(20*60*60*1000)).toISOString();
+      $.get('https://data.seattle.gov/resource/teu6-p2zn.json?$where=date_reported>"'+twelveHoursAgo+'"',
+         function(data,msg,xhr){
+           if(localStorage.lastMod===xhr.getResponseHeader('Last-Modified')){
+            //do nothing
+             console.log('the last mods were the same');
+             policeData.loadData(JSON.parse(localStorage.allIncidents));
+           }else{
+             policeData.callSeattle();
+             console.log('the last mods were not the same');
+           }
+         });
+    }
   };
 
   policeData.fillDB = function(){
@@ -85,6 +84,7 @@
   };
 
   policeData.buildDatabase = function(){
+    policeData.clearDB();
     webDB.execute(
       'CREATE TABLE IF NOT EXISTS crimes('+
       'id INTEGER PRIMARY KEY,'+
