@@ -1,6 +1,11 @@
+'use strict';
 (function(module) {
-  'use strict';
   var policeDataController = {};
+
+  policeDataController.reveal = function() {
+    $('.barny').hide();
+    $('#crimedata').show();
+  };
 
   module.policeDataController = policeDataController;
 }(window));

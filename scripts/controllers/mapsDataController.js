@@ -1,6 +1,11 @@
+'use strict';
 (function(module) {
-  'use strict';
   var mapsDataController = {};
+
+  mapsDataController.reveal = function() {
+    $('.barny').hide();
+    $('#map').show();
+  };
 
   module.mapsDataController = mapsDataController;
 }(window));
