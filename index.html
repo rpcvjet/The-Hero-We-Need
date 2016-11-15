@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="msapplication-config" content="styles/icons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
   <title>The Hero We Need</title>
   <link rel="stylesheet" href="/styles/reset.css">
   <link rel="stylesheet" href="/styles/base.css">
@@ -25,8 +27,14 @@
   <link rel="manifest" href="styles/icons/manifest.json">
   <link rel="mask-icon" href="styles/icons/safari-pinned-tab.svg" color="#5bbad5">
   <link rel="shortcut icon" href="styles/icons/favicon.ico">
-  <meta name="msapplication-config" content="styles/icons/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
+  <script id="data-table-template" type="text/x-handlebars-template">
+    <tr>
+      <td>{{date_reported}}</td>
+      <td>{{hundred_block_location}}</td>
+      <td>{{offense_type}}</td>
+      <td>{{summarized_offense_description}}</td>
+    </tr>
+  </script>
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   <!-- Navigation -->
@@ -47,6 +55,9 @@
           <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
           <li class="hidden">
             <a href="#page-top"></a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#map">Map</a>
           </li>
           <li>
             <a class="page-scroll" href="#crimedata">Crime Data</a>
@@ -87,7 +98,16 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <h2>Crime Data</h2>
-        <p>Crime Data goes here</p>
+        <table class="table table-hover">
+          <tbody id="police-data">
+            <tr>
+              <th>Date Reported</th>
+              <th>Block Location</th>
+              <th>Offense Type</th>
+              <th>Offense Summary</th>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -99,22 +119,22 @@
         <h2>About Crime City</h2>
         <p>We are codefellows students.</p>
         <div class="col-lg-6 col-sm-6">
-          <img class="about-pic" src="http://placehold.it/150x150">
+          <img class="about-pic" src="/img/about-ken.jpg">
           <h3>Kenneth Edwards</h3>
           <p>Description about Kenneth Edwards.</p>
         </div>
         <div class="col-lg-6 col-sm-6">
-          <img class="about-pic" src="http://placehold.it/150x150">
+          <img class="about-pic" src="/img/about-jonny.jpg">
           <h3>Jonathan Heemstra</h3>
           <p>Description about Jonathan Heemstra.</p>
         </div>
         <div class="col-lg-6 col-sm-6">
-          <img class="about-pic" src="http://placehold.it/150x150">
+          <img class="about-pic" src="/img/about-ben.jpg">
           <h3>Benjamin Petty</h3>
           <p>Description about Benjamin Petty.</p>
         </div>
         <div class="col-lg-6 col-sm-6">
-          <img class="about-pic" src="http://placehold.it/150x150">
+          <img class="about-pic" src="/img/about-julien.jpg">
           <h3>Julien Wilson</h3>
           <p>Description about Julien Wilson.</p>
         </div>
@@ -138,6 +158,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.min.js"></script>
   <script src="https://cdn.rawgit.com/download/webdb/0.5.0/dist/webdb.min.js"></script>
+  <script src="tokens.js"></script>
   <script src="/vendor/scripts/html5sql.js"></script>
   <script src="/vendor/scripts/webdb.js"></script>
   <script src="/scripts/models/mapsData.js"></script>
