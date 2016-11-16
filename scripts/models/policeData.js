@@ -3,7 +3,9 @@
 
   function policeData(incident){
     this.date_reported=new Date(incident.date_reported);
-    this.location = {lat: incident.location.latitude, lon:incident.location.longitude};
+    // this.location = {lat: incident.location.latitude, lon:incident.location.longitude};
+    this.latitude = incident.location.latitude;
+    this.longitude = incident.location.longitude;
     this.offense_type=incident.offense_type;
     this.summarized_offense_description=incident.summarized_offense_description;
     this.zip=policeData.getZip(incident);
@@ -11,11 +13,11 @@
 
   policeData.allIncidents = [];
 
-  policeData.prototype.renderTable = function() {
-    console.log('RUN RENDER');
+
+  policeData.renderTable = function(data) {
     var source = $('#data-table-template').html();
     var template = Handlebars.compile(source);
-    return template(this);
+    return template(data);
   };
 
   policeData.getZip=function(incident){
@@ -35,10 +37,7 @@
     policeData.allIncidents=inputData.map(function(elem,idx,array){
       return new policeData(elem);
     });
-    policeData.allIncidents.map(function(data){
-      $('#police-data').append(data.renderTable());
-    });
-    mapsDataView.renderMaps();
+    policeDataView.renderPage(policeData.allIncidents);
     policeDataView.populateFilters();
   };
 
@@ -48,7 +47,6 @@
     var twelveHoursAgo = new Date(Date.now()-(20*60*60*1000)).toISOString();
     $.get('https://data.seattle.gov/resource/teu6-p2zn.json?$where=date_reported>"'+twelveHoursAgo+'"', function(data,msg,xhr){
       var lastMod = xhr.getResponseHeader('Last-Modified');
-      console.log(data);
       localStorage.setItem('lastMod', lastMod);
       localStorage.setItem('allIncidents', JSON.stringify(data));
       policeData.loadData(data);
@@ -85,7 +83,6 @@
   };
 
   policeData.fillDB = function(){
-    console.log(policeData.allIncidents);
     policeData.allIncidents.forEach(function(elem){
       elem.insertRecord();
     });
@@ -96,8 +93,8 @@
     webDB.execute(
       'CREATE TABLE IF NOT EXISTS crimes('+
       'id INTEGER PRIMARY KEY,'+
-      'date DATE,'+
-      'crime_type VARCHAR,'+
+      'date_reported DATE,'+
+      'offense_type VARCHAR,'+
       'zip VARCHAR(5),'+
       'longitude FLOAT,'+
       'latitude FLOAT);',
@@ -109,9 +106,19 @@
   policeData.prototype.insertRecord = function(){
     webDB.execute(
       [{
-        'sql': 'INSERT INTO crimes(date, crime_type, zip, longitude, latitude) VALUES(?,?,?,?,?);',
-        'data':[this.date_reported, this.summarized_offense_description, this.zip, this.location.longitude, this.location.latitude]
+        'sql': 'INSERT INTO crimes(date_reported, offense_type, zip, longitude, latitude) VALUES(?,?,?,?,?);',
+        'data':[this.date_reported, this.offense_type, this.zip, this.longitude, this.latitude]
       }]
+    );
+  };
+
+  policeData.findWhere = function(field, value, callback) {
+    webDB.execute(
+      [{
+        sql: 'SELECT * FROM crimes WHERE ' + field + ' = ?;',
+        data: [value]
+      }],
+      callback
     );
   };
 

@@ -7,7 +7,7 @@
 
     var mapsDataView = {};
 
-    mapsDataView.renderMaps = function (){
+    mapsDataView.renderMaps = function (policeDataArray){
 //    var jsonIncidents= JSON.stringify(policeData.allIncidents);
   // Creating a new map
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -15,9 +15,9 @@
         zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
-      for (var i = 0, length = policeData.allIncidents.length; i < length; i++) {
-        var data = policeData.allIncidents[i];
-        var latLng = new google.maps.LatLng(data.location.lat, data.location.lon);
+      for (var i = 0, length = policeDataArray.length; i < length; i++) {
+        var data = policeDataArray[i];
+        var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
     // Creating a marker and putting it on the map
         var marker = new google.maps.Marker({
@@ -30,8 +30,7 @@
 
           // Attaching a click event to the current marker
           google.maps.event.addListener(marker, 'click', function(e) {
-            infoWindow.setContent(data.date_reported.toString() + '<br>' + data.summarized_offense_description);
-
+            infoWindow.setContent(data.date_reported.toString() + '<br>' + data.offense_type);
             infoWindow.open(map, marker);
           });
         }) (marker, data);
