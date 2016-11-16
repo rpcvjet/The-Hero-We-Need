@@ -29,11 +29,26 @@
         var crime = this.id.replace('-selector', '');
         page('/' + crime + '/' + $(this).val().replace(/\W+/g, '+'));
       }else{
-        
         page('/');
       }
     });
   };
+
+  policeDataView.handleZipFilters = function() {
+    $('#zip-selector').on('click','button', function(e) {
+      e.preventDefault();
+      var filtervalue = $(this).siblings().val();
+      console.log(filtervalue);
+      if(filtervalue!==''){
+        console.log('true');
+        page('/zip/' + filtervalue);
+      }else{
+        page('/');
+      }
+    });
+  };
+
+  policeDataView.handleZipFilters();
 
   module.policeDataView = policeDataView;
 }(window));
