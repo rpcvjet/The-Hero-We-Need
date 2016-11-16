@@ -10,3 +10,12 @@
 .table th, .table td {
   text-align: center;
 }
+
+#crimedata {
+  padding-top: 5%;
+}
+
+#zipform {
+  color: black;
+  margin-bottom: 35px;
+}

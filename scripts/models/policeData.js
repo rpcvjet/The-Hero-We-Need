@@ -39,6 +39,7 @@
       $('#police-data').append(data.renderTable());
     });
     mapsDataView.renderMaps();
+    policeDataView.populateFilters();
   };
 
   policeData.callSeattle = function(){
@@ -114,7 +115,17 @@
     );
   };
 
-
+  policeData.crimeFilter = function() {
+    return policeData.allIncidents.map(function(crimes) {
+      return crimes.offense_type;
+    })
+    .reduce(function(acc, cur) {
+      if (acc.indexOf(cur) === -1) {
+        acc.push(cur);
+      }
+      return acc;
+    }, []);
+  };
 
   module.policeData = policeData;
 })(window);
