@@ -32,11 +32,9 @@
   <link rel="shortcut icon" href="styles/icons/favicon.ico">
   <!-- Data Table Template -->
   <script id="data-table-template" type="text/x-handlebars-template">
-    <tr>
+    <tr class="reported-crimes">
       <td>{{date_reported}}</td>
-      <td>{{hundred_block_location}}</td>
       <td>{{offense_type}}</td>
-      <td>{{summarized_offense_description}}</td>
     </tr>
   </script>
   <!-- Crimes Filter Template -->
@@ -107,23 +105,22 @@
       <div class="col-lg-8 col-lg-offset-2">
         <h2>Crime Data</h2>
         <!-- Zip Form -->
-        <form id="zipform" class="col-lg-6">
-          <div class="ui action input">
-            <input type="text" placeholder="Enter Zip Code">
-            <button class="ui button">Search</button>
-          </div>
-        </form>
-        <select id="crime-selector" class="col-lg-6">
-          <option value="">-- Filter By Crime --</option>
-        </select>
-
+        <div id="filters">
+          <form id="zip-selector" class="col-lg-6">
+            <div class="ui action input">
+              <input type="text" placeholder="Enter Zip Code">
+              <button class="ui button">Search</button>
+            </div>
+          </form>
+          <select id="crime-selector" class="col-lg-6">
+            <option value="">-- Filter By Crime --</option>
+          </select>
+        </div>
         <table class="table table-hover">
           <tbody id="police-data">
             <tr>
               <th>Date Reported</th>
-              <th>Block Location</th>
               <th>Offense Type</th>
-              <th>Offense Summary</th>
             </tr>
           </tbody>
         </table>
