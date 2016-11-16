@@ -4,8 +4,8 @@
   function policeData(incident){
     this.date_reported=new Date(incident.date_reported);
     // this.location = {lat: incident.location.latitude, lon:incident.location.longitude};
-    this.latitude = incident.location.latitude;
-    this.longitude = incident.location.longitude;
+    this.latitude = incident.latitude;
+    this.longitude = incident.longitude;
     this.offense_type=incident.offense_type;
     this.summarized_offense_description=incident.summarized_offense_description;
     this.zip=policeData.getZip(incident);
