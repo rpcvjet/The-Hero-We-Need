@@ -21,7 +21,7 @@
   };
 
   policeData.getZip=function(incident){
-    var latlng=incident.location.latitude+','+incident.location.longitude;
+    var latlng=incident.latitude+','+incident.longitude;
     var zippy;
     $.ajax({
       url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latlng+'&result_type=street_address&key='+gMapsToken,
