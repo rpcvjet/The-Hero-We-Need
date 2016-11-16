@@ -51,6 +51,8 @@
       localStorage.setItem('allIncidents', JSON.stringify(data));
       policeData.loadData(data);
       policeData.buildDatabase();
+      console.log(lastMod);
+      var timeRefreshed = localStorage.getItem('lastMod');
 
     });
   };
