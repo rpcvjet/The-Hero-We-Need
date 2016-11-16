@@ -17,6 +17,7 @@
     policeDataArray.map(function(data){
       $('#police-data').append(policeData.renderTable(data));
     });
+    $('#lastmodified').append(localStorage.lastMod);
     mapsDataView.renderMaps(policeDataArray);
     policeDataView.handleCrimeTypeFilters();
   };
