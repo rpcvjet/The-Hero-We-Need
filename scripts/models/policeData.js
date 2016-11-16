@@ -94,7 +94,7 @@
       'CREATE TABLE IF NOT EXISTS crimes('+
       'id INTEGER PRIMARY KEY,'+
       'date_reported DATE,'+
-      'offense_type VARCHAR,'+
+      'summarized_offense_description VARCHAR,'+
       'zip VARCHAR(5),'+
       'longitude FLOAT,'+
       'latitude FLOAT);',
@@ -106,13 +106,14 @@
   policeData.prototype.insertRecord = function(){
     webDB.execute(
       [{
-        'sql': 'INSERT INTO crimes(date_reported, offense_type, zip, longitude, latitude) VALUES(?,?,?,?,?);',
-        'data':[this.date_reported, this.offense_type, this.zip, this.longitude, this.latitude]
+        'sql': 'INSERT INTO crimes(date_reported, summarized_offense_description, zip, longitude, latitude) VALUES(?,?,?,?,?);',
+        'data':[this.date_reported, this.summarized_offense_description, this.zip, this.longitude, this.latitude]
       }]
     );
   };
 
   policeData.findWhere = function(field, value, callback) {
+    console.log(value);
     webDB.execute(
       [{
         sql: 'SELECT * FROM crimes WHERE ' + field + ' = ?;',
@@ -124,7 +125,7 @@
 
   policeData.crimeFilter = function() {
     return policeData.allIncidents.map(function(crimes) {
-      return crimes.offense_type;
+      return crimes.summarized_offense_description;
     })
     .reduce(function(acc, cur) {
       if (acc.indexOf(cur) === -1) {

@@ -14,7 +14,7 @@
       next();
     };
     policeData.findWhere(
-      'offense_type', ctx.params.crimeType.replace('+', ' '), crimeData
+      'summarized_offense_description', ctx.params.crimeType.replace('+', ' '), crimeData
     );
   };
 
