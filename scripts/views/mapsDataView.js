@@ -30,7 +30,7 @@
 
           // Attaching a click event to the current marker
           google.maps.event.addListener(marker, 'click', function(e) {
-            infoWindow.setContent(data.date_reported.toString() + '<br>' + data.offense_type);
+            infoWindow.setContent(data.date_reported.toString() + '<br>' + data.summarized_offense_description);
             infoWindow.open(map, marker);
           });
         }) (marker, data);
