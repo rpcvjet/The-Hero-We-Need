@@ -141,7 +141,12 @@
 
           // Attaching a click event to the current marker
           google.maps.event.addListener(marker, 'click', function(e) {
-            infoWindow.setContent(data.date_reported.toString() + '<br>' + data.summarized_offense_description);
+            infoWindow.setContent(data.date_reported.toString() +
+            '<br>' +
+            data.summarized_offense_description +
+            '<br>' +
+            data.zip
+          );
             infoWindow.open(map, marker);
           });
         }) (marker, data);
