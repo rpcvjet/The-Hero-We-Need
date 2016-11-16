@@ -23,8 +23,15 @@
 
   policeDataView.handleCrimeTypeFilters = function() {
     $('#filters').one('change', 'select', function() {
-      var crime = this.id.replace('-selector', '');
-      page('/' + crime + '/' + $(this).val().replace(/\W+/g, '+'));
+      var filtervalue = $(this).val();
+      if(filtervalue!==''){
+        console.log('true');
+        var crime = this.id.replace('-selector', '');
+        page('/' + crime + '/' + $(this).val().replace(/\W+/g, '+'));
+      }else{
+        
+        page('/');
+      }
     });
   };
 
