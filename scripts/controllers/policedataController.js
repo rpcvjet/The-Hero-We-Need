@@ -4,7 +4,9 @@
 
   policeDataController.reveal = function() {
     $('.barny').fadeOut();
+    $('#map').fadeIn();
     $('#crimedata').fadeIn();
+  //  window.location = '#crimedata';
   };
 
   policeDataController.resetPage = function(){
