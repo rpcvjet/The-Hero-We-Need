@@ -7,6 +7,10 @@
     $('#crimedata').fadeIn();
   };
 
+  policeDataController.resetPage = function(){
+    policeData.loadData(policeData.allIncidents);
+  };
+
   policeDataController.loadByCrimeType = function(ctx, next) {
     var crimeData = function(crimes) {
       console.log('Crimes',crimes);
