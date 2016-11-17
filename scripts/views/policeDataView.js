@@ -28,8 +28,8 @@
       if(filtervalue!==''){
         console.log('true');
         var crime = this.id.replace('-selector', '');
-        page('/' + crime + '/' + $(this).val().replace(/\W+/g, '+'));
-      }else{
+        page('/' + crime + '/' + $(this).val().replace(/ /g,'+').replace(/\//g,'%2F').replace(/\,/g,'%2C').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/\-/g,'%2D'));
+      } else {
         page('/');
       }
     });

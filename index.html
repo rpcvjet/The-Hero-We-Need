@@ -34,8 +34,9 @@
   <!-- Data Table Template -->
   <script id="data-table-template" type="text/x-handlebars-template">
     <tr class="reported-crimes">
-      <td>{{date_reported}}</td>
-      <td>{{summarized_offense_description}}</td>
+      <td>{{at_scene_time}}</td>
+      <td>{{hundred_block_location}}</td>
+      <td>{{initial_type_description}}</td>
     </tr>
   </script>
   <!-- Crimes Filter Template -->
@@ -121,6 +122,7 @@
           <tbody id="police-data">
             <tr>
               <th>Date Reported</th>
+              <th>Block Location</th>
               <th>Offense Type</th>
             </tr>
           </tbody>
