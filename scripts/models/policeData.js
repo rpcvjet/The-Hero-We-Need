@@ -1,8 +1,12 @@
 (function(module) {
   'use strict';
 
+  policeData.allZips = ['98101', '98102', '98103', '98104', '98105', '98106', '98107', '98108', '98109', '98112', '98115', '98116', '98117', '98118', '98119', '98121', '98122', '98125', '98126', '98133', '98134', '98136', '98144', '98146', '98154', '98164', '98174', '98177', '98178', '98195', '98199'];
+
   function policeData(incident){
-    this.at_scene_time = new Date(incident.at_scene_time);
+    var date = new Date(incident.at_scene_time);
+    date.setUTCHours(date.getUTCHours() + 8);
+    this.at_scene_time = date;
     this.latitude = incident.latitude;
     this.longitude = incident.longitude;
     this.initial_type_subgroup = incident.initial_type_subgroup;
@@ -72,7 +76,7 @@
             //do nothing
              console.log('the last mods were the same');
              policeData.loadData(JSON.parse(localStorage.allIncidents));
-           }else{
+           } else {
              policeData.callSeattle();
              console.log('the last mods were not the same');
            }

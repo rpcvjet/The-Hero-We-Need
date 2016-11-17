@@ -13,6 +13,9 @@
   };
 
   policeDataView.renderPage = function(policeDataArray) {
+    policeDataArray.sort(function(a, b){
+      return b.at_scene_time - a.at_scene_time;
+    });
     $('#police-data .reported-crimes').remove();
     policeDataArray.map(function(data){
       $('#police-data').append(policeData.renderTable(data));
@@ -39,10 +42,14 @@
     $('#zip-selector').on('click','button', function(e) {
       e.preventDefault();
       var filtervalue = $(this).siblings().val();
-      console.log(filtervalue);
-      if(filtervalue!==''){
-        console.log('true');
-        page('/zip/' + filtervalue);
+      var validzip = policeData.allZips.indexOf(filtervalue);
+      if(filtervalue !== ''){
+        if (validzip !== -1) {
+          page('/zip/' + filtervalue);
+        } else {
+          alert('Please provide a Seattle City Zipcode');
+          $(this).siblings().val('');
+        }
       }else{
         page('/');
       }
