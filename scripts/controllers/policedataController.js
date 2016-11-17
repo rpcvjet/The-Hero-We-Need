@@ -22,7 +22,7 @@
       next();
     };
     policeData.findWhere(
-      'summarized_offense_description', ctx.params.crimeType.replace('+', ' '), crimeData
+      'initial_type_subgroup', ctx.params.crimeType.replace('+', ' '), crimeData
     );
   };
 
