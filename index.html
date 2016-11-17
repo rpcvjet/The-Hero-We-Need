@@ -24,6 +24,7 @@
   <!-- Semantic UI -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/input.min.css" rel="stylesheet" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/button.min.css" rel="stylesheet" typ="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/dropdown.css" rel="stylesheet" type="text/css">
   <!-- Favicon Stuff -->
   <link rel="apple-touch-icon" sizes="180x180" href="/styles/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/styles/icons/favicon-32x32.png" sizes="32x32">
@@ -114,9 +115,12 @@
               <button class="ui button">Search</button>
             </div>
           </form>
-          <select id="crime-selector" class="col-lg-6">
-            <option value="">-- Filter By Crime --</option>
-          </select>
+          <!-- Crime Selector Form -->
+          <form id="crime-selector-form" class="col-lg-6">
+            <select id="crime-selector" class="ui dropdown">
+              <option value="">-- Show All --</option>
+            </select>
+          </form>
         </div>
         <table class="table table-hover">
           <tbody id="police-data">
@@ -133,7 +137,7 @@
 
   <!-- AboutMe Section -->
 
-  <section id="about" class="container content-section text-center barny">
+  <!-- <section id="about" class="container content-section text-center barny">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <h2>About Crime City</h2>
@@ -219,7 +223,7 @@
         </div>
 >>>>>>> 05ad7ecf116262bed3d9e6996be9ea4cf92a8923
       </div>
-  </section>
+  </section> -->
 
 
   <!-- Footer -->
@@ -250,5 +254,6 @@
   <script src="/scripts/controllers/policedataController.js"></script>
   <script src="/scripts/controllers/homeController.js"></script>
   <script src="/scripts/controllers/routes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/dropdown.js"></script>
 </body>
 </html>
