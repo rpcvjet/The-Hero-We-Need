@@ -1,4 +1,4 @@
 'use strict';
-$('#ken').mouseover(function(){
-  $(this)
+$('.flip-container').hover(function(){
+  $(this).toggle('.flipper');
 });
