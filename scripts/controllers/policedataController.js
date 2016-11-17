@@ -31,7 +31,8 @@
 
   policeDataController.index = function(ctx, next) {
     if(ctx.crimes.length) {
-      policeDataView.renderPage(ctx.crimes);
+      var arrayToPass = ctx.crimes;
+      policeDataView.renderPage(arrayToPass);
     }
     // else {
     //   page('/');
