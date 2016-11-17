@@ -20,7 +20,14 @@
   padding-top: 5%;
 }*/
 
-#zipform {
+#zip-selector {
   color: black;
   margin-bottom: 35px;
+}
+
+#crime-selector {
+  color: black;
+  margin-bottom: 35px;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  width: 239.36px;
 }
