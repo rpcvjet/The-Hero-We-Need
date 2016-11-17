@@ -4,8 +4,8 @@
   function policeData(incident){
     this.date_reported=new Date(incident.date_reported);
     // this.location = {lat: incident.location.latitude, lon:incident.location.longitude};
-    this.latitude = incident.location.latitude;
-    this.longitude = incident.location.longitude;
+    this.latitude = incident.latitude;
+    this.longitude = incident.longitude;
     this.offense_type=incident.offense_type;
     this.summarized_offense_description=incident.summarized_offense_description;
     this.zip=policeData.getZip(incident);
@@ -21,7 +21,7 @@
   };
 
   policeData.getZip=function(incident){
-    var latlng=incident.location.latitude+','+incident.location.longitude;
+    var latlng=incident.latitude+','+incident.longitude;
     var zippy;
     $.ajax({
       url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latlng+'&result_type=street_address&key='+gMapsToken,
@@ -94,7 +94,7 @@
       'CREATE TABLE IF NOT EXISTS crimes('+
       'id INTEGER PRIMARY KEY,'+
       'date_reported DATE,'+
-      'offense_type VARCHAR,'+
+      'summarized_offense_description VARCHAR,'+
       'zip VARCHAR(5),'+
       'longitude FLOAT,'+
       'latitude FLOAT);',
@@ -106,13 +106,14 @@
   policeData.prototype.insertRecord = function(){
     webDB.execute(
       [{
-        'sql': 'INSERT INTO crimes(date_reported, offense_type, zip, longitude, latitude) VALUES(?,?,?,?,?);',
-        'data':[this.date_reported, this.offense_type, this.zip, this.longitude, this.latitude]
+        'sql': 'INSERT INTO crimes(date_reported, summarized_offense_description, zip, longitude, latitude) VALUES(?,?,?,?,?);',
+        'data':[this.date_reported, this.summarized_offense_description, this.zip, this.longitude, this.latitude]
       }]
     );
   };
 
   policeData.findWhere = function(field, value, callback) {
+    console.log(value);
     webDB.execute(
       [{
         sql: 'SELECT * FROM crimes WHERE ' + field + ' = ?;',
@@ -124,7 +125,7 @@
 
   policeData.crimeFilter = function() {
     return policeData.allIncidents.map(function(crimes) {
-      return crimes.offense_type;
+      return crimes.summarized_offense_description;
     })
     .reduce(function(acc, cur) {
       if (acc.indexOf(cur) === -1) {

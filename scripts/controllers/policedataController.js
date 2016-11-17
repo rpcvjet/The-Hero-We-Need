@@ -3,8 +3,8 @@
   var policeDataController = {};
 
   policeDataController.reveal = function() {
-    $('.barny').hide();
-    $('#crimedata').show();
+    $('.barny').fadeOut();
+    $('#crimedata').fadeIn();
   };
 
   policeDataController.loadByCrimeType = function(ctx, next) {
@@ -14,7 +14,18 @@
       next();
     };
     policeData.findWhere(
-      'offense_type', ctx.params.crimeType.replace('+', ' '), crimeData
+      'summarized_offense_description', ctx.params.crimeType.replace('+', ' '), crimeData
+    );
+  };
+
+  policeDataController.loadByZip = function(ctx, next) {
+    var crimeData = function(crimes) {
+      console.log('Crimes',crimes);
+      ctx.crimes = crimes;
+      next();
+    };
+    policeData.findWhere(
+      'zip', ctx.params.zipcode, crimeData
     );
   };
 

@@ -3,7 +3,7 @@
   var homeController = {};
 
   homeController.reveal = function() {
-    $('.barny').show();
+    $('.barny').fadeIn();
   };
 
   module.homeController = homeController;

@@ -16,26 +16,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/styles/flip.css">
   <!-- Theme CSS -->
-  <link href="vendor/styles/grayscale.css" rel="stylesheet">
+  <link href="/vendor/styles/grayscale.css" rel="stylesheet">
   <!-- Custom Fonts -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <!-- Semantic UI -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/input.min.css" rel="stylesheet" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/button.min.css" rel="stylesheet" typ="text/css">
   <!-- Favicon Stuff -->
-  <link rel="apple-touch-icon" sizes="180x180" href="styles/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="styles/icons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="styles/icons/favicon-16x16.png" sizes="16x16">
-  <link rel="manifest" href="styles/icons/manifest.json">
-  <link rel="mask-icon" href="styles/icons/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="styles/icons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/styles/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/styles/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/styles/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/styles/icons/manifest.json">
+  <link rel="mask-icon" href="/styles/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/styles/icons/favicon.ico">
   <!-- Data Table Template -->
   <script id="data-table-template" type="text/x-handlebars-template">
     <tr class="reported-crimes">
       <td>{{date_reported}}</td>
-      <td>{{offense_type}}</td>
+      <td>{{summarized_offense_description}}</td>
     </tr>
   </script>
   <!-- Crimes Filter Template -->
@@ -51,7 +51,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
           Menu <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand page-scroll" href="/home">
+        <a class="navbar-brand page-scroll" href="/home#page-top">
           <i class="fa fa-play-circle"></i> <span class="light">The Hero</span> We Need
         </a>
       </div>
@@ -88,7 +88,7 @@
             <h1 class="brand-heading">Crime City</h1>
             <p class="intro-text">View police reports filed in the City of Seattle within the last 12 hours.
             </p>
-            <a href="#about" class="btn btn-circle page-scroll">
+            <a href="#map" class="btn btn-circle page-scroll">
               <i class="fa fa-angle-double-down animated"></i>
             </a>
           </div>
@@ -100,9 +100,6 @@
   <!-- Map Section -->
   <div id="map" class="barny maptext"></div>
 
-  <!--Last Modified Section-->
-  <div id="lastmodified"></div>
-
   <!-- Table Data Section -->
   <section id="crimedata" class="container content-section text-center barny">
     <div class="row">
@@ -112,7 +109,7 @@
         <div id="filters">
           <form id="zip-selector" class="col-lg-6">
             <div class="ui action input">
-              <input type="text" placeholder="Enter Zip Code">
+              <input type="text" placeholder="Enter Zip Code" value="">
               <button class="ui button">Search</button>
             </div>
           </form>
@@ -141,6 +138,7 @@
         <p>We are codefellows students.</p>
 
         <div class="col-lg-6 col-sm-6">
+<<<<<<< HEAD
           <div class="flip-container">
     	<div class="flipper">
     		<div class="front">
@@ -197,6 +195,27 @@
       </div>
       </div>
       </div>
+=======
+          <img class="about-pic" src="/img/about-ken.jpg">
+          <h3>Kenneth Edwards</h3>
+          <p>Description about Kenneth Edwards.</p>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <img class="about-pic" src="/img/about-jonny.jpg">
+          <h3>Jonathan Heemstra</h3>
+          <p>Description about Jonathan Heemstra.</p>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <img class="about-pic" src="/img/about-ben.jpg">
+          <h3>Benjamin Petty</h3>
+          <p>Description about Benjamin Petty.</p>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <img class="about-pic" src="/img/about-julien.jpg">
+          <h3>Julien Wilson</h3>
+          <p>Description about Julien Wilson.</p>
+        </div>
+>>>>>>> 05ad7ecf116262bed3d9e6996be9ea4cf92a8923
       </div>
   </section>
 
@@ -217,7 +236,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.7.1/page.min.js"></script>
   <script src="https://cdn.rawgit.com/download/webdb/0.5.0/dist/webdb.min.js"></script>
-  <script src="tokens.js"></script>
+  <script src="/tokens.js"></script>
   <script src="/vendor/scripts/html5sql.js"></script>
   <script src="/vendor/scripts/webdb.js"></script>
   <script src="/scripts/models/mapsData.js"></script>
@@ -226,8 +245,8 @@
   <script src="/scripts/views/policeDataView.js"></script>
   <script src="/scripts/controllers/mapsDataController.js"></script>
   <script src="/scripts/controllers/aboutmeDataController.js"></script>
-  <script src="scripts/controllers/policedataController.js"></script>
-  <script src="scripts/controllers/homeController.js"></script>
+  <script src="/scripts/controllers/policedataController.js"></script>
+  <script src="/scripts/controllers/homeController.js"></script>
   <script src="/scripts/controllers/routes.js"></script>
 </body>
 </html>
