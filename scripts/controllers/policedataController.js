@@ -6,6 +6,8 @@
     $('.barny').fadeOut();
     $('#map').fadeIn();
     $('#crimedata').fadeIn();
+    $('#lastmodified').fadeIn();
+
   //  window.location = '#crimedata';
   };
 
