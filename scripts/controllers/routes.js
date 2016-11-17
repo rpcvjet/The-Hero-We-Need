@@ -6,5 +6,6 @@ page('/crime/:crimeType', policeDataController.loadByCrimeType, policeDataContro
 page('/crime','/');
 page('/', policeData.loadData(policeData.allIncidents));
 page('/zip/:zipcode', policeDataController.loadByZip, policeDataController.index);
+page('/zip','/');
 
 page();
