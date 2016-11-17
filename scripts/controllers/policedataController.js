@@ -7,8 +7,6 @@
     $('#map').fadeIn();
     $('#crimedata').fadeIn();
     $('#lastmodified').fadeIn();
-
-  //  window.location = '#crimedata';
   };
 
   policeDataController.resetPage = function(){
@@ -41,9 +39,6 @@
     if(ctx.crimes.length) {
       policeDataView.renderPage(ctx.crimes);
     }
-    // else {
-    //   page('/');
-    // }
   };
 
   module.policeDataController = policeDataController;
