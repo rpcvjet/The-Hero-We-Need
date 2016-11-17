@@ -3,8 +3,8 @@
   var aboutmeDataController = {};
 
   aboutmeDataController.reveal = function() {
-    $('.barny').hide();
-    $('#about').show();
+    $('.barny').fadeOut();
+    $('#about').fadeIn();
   };
 
   module.aboutmeDataController = aboutmeDataController;

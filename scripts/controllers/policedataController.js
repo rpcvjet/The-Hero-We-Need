@@ -3,8 +3,8 @@
   var policeDataController = {};
 
   policeDataController.reveal = function() {
-    $('.barny').hide();
-    $('#crimedata').show();
+    $('.barny').fadeOut();
+    $('#crimedata').fadeIn();
   };
 
   policeDataController.loadByCrimeType = function(ctx, next) {

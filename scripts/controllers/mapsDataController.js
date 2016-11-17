@@ -3,8 +3,8 @@
   var mapsDataController = {};
 
   mapsDataController.reveal = function() {
-    $('.barny').hide();
-    $('#map').show();
+    $('.barny').fadeOut();
+    $('#map').fadeIn();
   };
 
   module.mapsDataController = mapsDataController;
