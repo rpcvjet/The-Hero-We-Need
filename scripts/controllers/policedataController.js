@@ -7,8 +7,6 @@
     $('#map').fadeIn();
     $('#crimedata').fadeIn();
     $('#lastmodified').fadeIn();
-
-  //  window.location = '#crimedata';
   };
 
   policeDataController.resetPage = function(){
@@ -17,7 +15,6 @@
 
   policeDataController.loadByCrimeType = function(ctx, next) {
     var crimeData = function(crimes) {
-      console.log('Crimes',crimes);
       ctx.crimes = crimes;
       next();
     };
@@ -28,7 +25,6 @@
 
   policeDataController.loadByZip = function(ctx, next) {
     var crimeData = function(crimes) {
-      console.log('Crimes',crimes);
       ctx.crimes = crimes;
       next();
     };
@@ -41,9 +37,6 @@
     if(ctx.crimes.length) {
       policeDataView.renderPage(ctx.crimes);
     }
-    // else {
-    //   page('/');
-    // }
   };
 
   module.policeDataController = policeDataController;
