@@ -43,3 +43,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#reset-button .reset {
+  margin-bottom: 35px;
+  padding: 15px;
+}

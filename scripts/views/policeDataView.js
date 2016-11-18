@@ -27,7 +27,7 @@
 
   policeDataView.handleCrimeTypeFilters = function() {
     $('#crime-selector-form').one('change', 'select', function() {
-      $(this).parent().siblings().children().children().val('');
+      $(this).parent().siblings('#zip-selector').children().children().val('');
       var filtervalue = $(this).val();
       if(filtervalue !== ''){
         var crime = this.id.replace('-selector', '');
@@ -41,7 +41,7 @@
   policeDataView.handleZipFilters = function() {
     $('#zip-selector').on('click','button', function(e) {
       e.preventDefault();
-      $(this).parent().parent().siblings().children().val('');
+      $(this).parent().parent().siblings('#crime-selector-form').children().val('');
       var filtervalue = $(this).siblings().val();
       if(filtervalue !== ''){
         if (policeData.allZips.indexOf(filtervalue) !== -1) {
@@ -56,7 +56,17 @@
     });
   };
 
+  policeDataView.handleResetButton = function() {
+    $('#reset-button').on('click','button', function(e) {
+      e.preventDefault();
+      $(this).parent().siblings('#crime-selector-form').children().val('');
+      $(this).parent().siblings('#zip-selector').children().children().val('');
+      page('/');
+    });
+  };
+
   policeDataView.handleZipFilters();
+  policeDataView.handleResetButton();
 
   module.policeDataView = policeDataView;
 }(window));
