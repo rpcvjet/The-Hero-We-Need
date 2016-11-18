@@ -20,9 +20,9 @@
           'featureType': 'water',
           'elementType': 'geometry',
           'stylers': [{
-            'color': '#000000'
+            'color': '#182130'
           }, {
-            'lightness': 17
+            'lightness': 0
           }]
         }, {
           'featureType': 'landscape',
