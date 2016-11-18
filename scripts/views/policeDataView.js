@@ -26,13 +26,12 @@
   };
 
   policeDataView.handleCrimeTypeFilters = function() {
-    $('#filters').one('change', 'select', function() {
-      $(this).parent().parent().prev().children().val('');
+    $('#crime-selector-form').one('change', 'select', function() {
+      $(this).parent().siblings().children().children().val('');
       var filtervalue = $(this).val();
-      if(filtervalue!==''){
-        console.log('true');
+      if(filtervalue !== ''){
         var crime = this.id.replace('-selector', '');
-        page('/' + crime + '/' + $(this).val().replace(/ /g,'+').replace(/\//g,'%2F').replace(/\,/g,'%2C').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/\-/g,'%2D'));
+        page('/' + crime + '/' + $(this).val().replace(/ /g, '+').replace(/\//g, '%2F').replace(/\,/g, '%2C').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\-/g, '%2D'));
       } else {
         page('/');
       }

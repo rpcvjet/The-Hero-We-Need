@@ -31,10 +31,10 @@
     $.ajax({
       url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&result_type=street_address&key=' + gMapsToken,
       async:false,
-      success:function(data){
-        try{
+      success:function(data) {
+        try {
           zippy = data.results[0].address_components[7].short_name;
-        }catch(Exception){
+        } catch(Exception) {
           console.log('an error occured fetching zipcode', Exception);
         }
       }
@@ -123,7 +123,6 @@
   };
 
   policeData.findWhere = function(field, value, callback) {
-    console.log(value);
     webDB.execute(
       [{
         sql: 'SELECT * FROM crimes WHERE ' + field + ' = ?' + 'ORDER BY at_scene_time DESC;',

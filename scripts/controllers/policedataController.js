@@ -15,7 +15,6 @@
 
   policeDataController.loadByCrimeType = function(ctx, next) {
     var crimeData = function(crimes) {
-      console.log('Crimes',crimes);
       ctx.crimes = crimes;
       next();
     };
@@ -26,7 +25,6 @@
 
   policeDataController.loadByZip = function(ctx, next) {
     var crimeData = function(crimes) {
-      console.log('Crimes',crimes);
       ctx.crimes = crimes;
       next();
     };
