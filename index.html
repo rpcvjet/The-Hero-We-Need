@@ -110,17 +110,21 @@
         <h2>Crime Data</h2>
         <!-- Zip Form -->
         <div id="filters">
-          <form id="zip-selector" class="col-lg-6">
+          <form id="zip-selector" class="col-lg-5">
             <div class="ui action input">
               <input type="text" placeholder="Enter Zip Code" value="">
               <button class="ui button">Search</button>
             </div>
           </form>
           <!-- Crime Selector Form -->
-          <form id="crime-selector-form" class="col-lg-6">
+          <form id="crime-selector-form" class="col-lg-5">
             <select id="crime-selector" class="ui dropdown">
               <option value="">-- Show All --</option>
             </select>
+          </form>
+          <!-- Reset Button -->
+          <form id="reset-button" class="col-lg-2">
+            <button class="ui button reset">Clear Search</button>
           </form>
         </div>
         <table class="table table-hover">
