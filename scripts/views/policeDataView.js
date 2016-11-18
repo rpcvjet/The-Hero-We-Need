@@ -27,6 +27,7 @@
 
   policeDataView.handleCrimeTypeFilters = function() {
     $('#filters').one('change', 'select', function() {
+      $(this).parent().parent().prev().children().val('');
       var filtervalue = $(this).val();
       if(filtervalue!==''){
         console.log('true');
@@ -41,16 +42,16 @@
   policeDataView.handleZipFilters = function() {
     $('#zip-selector').on('click','button', function(e) {
       e.preventDefault();
+      $(this).parent().parent().siblings().children().val('');
       var filtervalue = $(this).siblings().val();
-      var validzip = policeData.allZips.indexOf(filtervalue);
       if(filtervalue !== ''){
-        if (validzip !== -1) {
+        if (policeData.allZips.indexOf(filtervalue) !== -1) {
           page('/zip/' + filtervalue);
         } else {
           alert('Please provide a Seattle City Zipcode');
           $(this).siblings().val('');
         }
-      }else{
+      } else {
         page('/');
       }
     });
