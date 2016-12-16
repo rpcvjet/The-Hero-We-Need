@@ -26,12 +26,12 @@
   };
 
   policeDataView.handleCrimeTypeFilters = function() {
-    $('#filters').one('change', 'select', function() {
+    $('#crime-selector-form').one('change', 'select', function() {
+      $(this).parent().siblings('#zip-selector').children().children().val('');
       var filtervalue = $(this).val();
-      if(filtervalue!==''){
-        console.log('true');
+      if(filtervalue !== ''){
         var crime = this.id.replace('-selector', '');
-        page('/' + crime + '/' + $(this).val().replace(/ /g,'+').replace(/\//g,'%2F').replace(/\,/g,'%2C').replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/\-/g,'%2D'));
+        page('/' + crime + '/' + $(this).val().replace(/ /g, '+').replace(/\//g, '%2F').replace(/\,/g, '%2C').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\-/g, '%2D'));
       } else {
         page('/');
       }
@@ -41,22 +41,32 @@
   policeDataView.handleZipFilters = function() {
     $('#zip-selector').on('click','button', function(e) {
       e.preventDefault();
+      $(this).parent().parent().siblings('#crime-selector-form').children().val('');
       var filtervalue = $(this).siblings().val();
-      var validzip = policeData.allZips.indexOf(filtervalue);
       if(filtervalue !== ''){
-        if (validzip !== -1) {
+        if (policeData.allZips.indexOf(filtervalue) !== -1) {
           page('/zip/' + filtervalue);
         } else {
           alert('Please provide a Seattle City Zipcode');
           $(this).siblings().val('');
         }
-      }else{
+      } else {
         page('/');
       }
     });
   };
 
+  policeDataView.handleResetButton = function() {
+    $('#reset-button').on('click','button', function(e) {
+      e.preventDefault();
+      $(this).parent().siblings('#crime-selector-form').children().val('');
+      $(this).parent().siblings('#zip-selector').children().children().val('');
+      page('/');
+    });
+  };
+
   policeDataView.handleZipFilters();
+  policeDataView.handleResetButton();
 
   module.policeDataView = policeDataView;
 }(window));

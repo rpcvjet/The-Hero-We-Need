@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="msapplication-config" content="styles/icons/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <title>The Hero We Need</title>
+  <title>Crime City: Seattle</title>
   <link rel="stylesheet" href="/styles/reset.css">
   <link rel="stylesheet" href="/styles/base.css">
   <link rel="stylesheet" href="/styles/layout.css">
@@ -54,8 +54,8 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
           Menu <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand page-scroll" href="/home#page-top">
-          <i class="fa fa-play-circle"></i> <span class="light">The Hero</span> We Need
+        <a class="navbar-brand page-scroll" href="/home#pagetop">
+          <i class="fa fa-play-circle"></i> Crime City <span class="light">: Seattle</span>
         </a>
       </div>
 
@@ -64,7 +64,7 @@
         <ul class="nav navbar-nav">
           <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
           <li class="hidden">
-            <a href="#page-top"></a>
+            <a href="/home#pagetop"></a>
           </li>
           <li>
             <a class="page-scroll" href="/crimedata">Crime Data</a>
@@ -86,9 +86,8 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h1 class="brand-heading">Crime City</h1>
-            <p class="intro-text">View police reports filed in the City of Seattle within the last 12 hours.
+            <p class="intro-text">All police responses to 911 calls in the City of Seattle within the last 12 hours.
             </p>
-            
           </div>
         </div>
       </div>
@@ -96,10 +95,10 @@
   </header>
 
   <!-- Map Section -->
-  <div id="map" class="barny maptext"></div>
+  <div id="map" class="barny maptext"><img id="loading" src="/img/loading.gif" /></div>
 
   <!--Last Modified Section-->
-  <div id="lastmodified" class="barny"></div>
+  <div class="barny">Last Updated: <span id="lastmodified"></span></div>
 
   <!-- Crime Data Section -->
   <section id="crimedata" class="container content-section text-center barny">
@@ -108,17 +107,21 @@
         <h2>Crime Data</h2>
         <!-- Zip Form -->
         <div id="filters">
-          <form id="zip-selector" class="col-lg-6">
+          <form id="zip-selector" class="col-lg-5">
             <div class="ui action input">
               <input type="text" placeholder="Enter Zip Code" value="">
               <button class="ui button">Search</button>
             </div>
           </form>
           <!-- Crime Selector Form -->
-          <form id="crime-selector-form" class="col-lg-6">
+          <form id="crime-selector-form" class="col-lg-5">
             <select id="crime-selector" class="ui dropdown">
               <option value="">-- Show All --</option>
             </select>
+          </form>
+          <!-- Reset Button -->
+          <form id="reset-button" class="col-lg-2">
+            <button class="ui button reset">Clear Search</button>
           </form>
         </div>
         <table class="table table-hover">
@@ -243,7 +246,7 @@
   <!-- Footer -->
   <footer>
     <div class="container text-center">
-      <p>Copyright &copy; Your Website 2016</p>
+      <p>Copyright &copy; Crime City 2016</p>
     </div>
   </footer>
 

@@ -31,3 +31,20 @@
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   width: 239.36px;
 }
+
+#map {
+  position: relative;
+}
+
+#loading {
+  filter: invert(100%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#reset-button .reset {
+  margin-bottom: 35px;
+  padding: 15px;
+}
